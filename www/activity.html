@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html manifest="cache.manifest">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css">
+<link rel="stylesheet" href="css/jquery.mobile.theme-1.3.0.css">
+<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.0.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/grid-listview.css">
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.3.0.js"></script>
+</head>
+<body>
+
+   <!-- 活动分类-->
+	<div data-role="page" id="act_index" data-dom-cache="true">
+    <div data-role="header" data-position="fixed" data-theme="c">
+    <a href="#" data-role="button" data-icon="back"   data-inline="true" data-rel="back">后退</a>
+    <a href="#" data-role="button" data-icon="star" data-inline="true" id="act_my_btn">我的圈子</a>
+		<h1>校园圈子</h1>
+    </div>
+    <div data-role="content" id="act_index">
+      <div class="ui-grid-a" id="act_list">
+    <div class="ui-block-a"><a  href="#" class="act_dis" id="act_1"><img src="images/apple.png" />
+   <div class="transparent act_sss"><span>追剧粉丝</span></div>
+    </a></div>
+   <div class="ui-block-b"><a  href="#" class="act_dis" id="act_2"><img src="images/apple.png" />
+     <div class="transparent act_sss"><span>旅游达人</span></div>
+     </a>
+   </div>
+    <div class="ui-block-a"><a  href="#" class="act_dis" id="act_3"><img src="images/apple.png" />
+    <div class="transparent act_sss"><span>体育部落</span></div>
+    </a></div>
+   <div class="ui-block-b"><a  href="#" class="act_dis" id="act_4"><img src="images/apple.png" />
+   <div class="transparent act_sss"><span>文人墨客</span></div></a></div>
+    <div class="ui-block-a"><a href="#" class="act_dis" id="act_5"><img src="images/apple.png" />
+    <div class="transparent act_sss"><span>时尚前沿</span></div></a></div>
+   <div class="ui-block-b"><a   href="#" class="act_dis" id="act_6"><img src="css/images/cover.jpg" />
+   <div class="transparent act_sss"><span>IT狂人</span></div></a></div>
+</div>
+    </div>
+     <div data-role="footer" data-position="fixed">
+     </div>
+	</div>
+	<!-- 个人活动列表-->
+	<div data-role="page" id="act_my" data-dom-cache="true">
+    <div data-role="header" data-position="fixed" data-theme="c">
+    <a href="#" data-role="button" data-icon="back"   data-inline="true" data-rel="back">后退</a>
+		<h1>我的活动</h1>
+    </div>
+    <div data-role="content" >
+    <ul  id="myact_list" class="list">
+	</ul>
+    </div>
+     <div data-role="footer" data-position="fixed">
+     </div>
+	</div>
+	
+	
+	<!-- 活动列表 -->
+	<div data-role="page" id="act_list1" data-dom-cache="true">
+    <div data-role="header" data-position="fixed" data-theme="c">
+    <a href="#" data-role="button" data-icon="back"   data-inline="true" data-rel="back">后退</a>
+    <a href="#" data-role="button" data-icon="add"   data-inline="true"  id="new_act_btn">围个圈子</a>
+		<h1>校园圈子</h1>
+    </div>
+     <div data-role="content" id="wrapper">
+   <div>
+         <div id="pullDown">
+         <span class="pullDownIcon"></span> <span class="pullDownLabel">下拉刷新...</span>
+         </div>
+     <ul  id="act_list2" class="list">
+	</ul>
+	     <div id="pullUp" class="transparent">
+         <span class="pullUpLabel">点击显示更多。。。</span>
+         </div>
+    </div>
+	</div>
+	<div data-role="footer" data-position="fixed">
+     </div>
+	</div>
+	<!-- 新建活动 -->
+	<div data-role="page" id="new_act" data-dom-cache="true">
+    <div data-role="header" data-position="fixed" data-theme="c">
+    <a href="#" data-role="button" data-icon="back"   data-inline="true" data-rel="back">后退</a>
+    <a href="#" data-role="button" data-icon="add"   data-inline="true"  id="add_new_act">完成</a>
+		<h1>围个圈子</h1>
+    </div>
+     <div data-role="content">
+     <div>
+       <div  id="new_act_form"  >
+       <label for="text-1">主题</label>
+       <input type="text" data-clear-btn="true" name="text-1" id="text-1" value="">
+        <label for="text-3">简介</label>
+       <textarea cols="50" rows="10" name="text-3" id="text-3"></textarea>
+       <label for="text-2">图片</label>
+       <h1><a href="javascript:void(0)" id="photo2">选择文件上传</a></h1>
+        </div>
+         <div style="width:100%;height:15em"><img src="" id="show_photo" style="height:100%;width:100%"></div>
+    </div>
+	</div>
+	 <div data-role="footer" data-position="fixed">
+     </div>
+	</div>
+	
+	<!-- 单个活动展示页 -->
+	<div data-role="page" id="act_one">
+	 <div data-role="header" data-position="fixed" data-theme="c">
+    	<a href="#" data-role="button" data-icon="back" data-iconpos="notext"  data-inline="true" data-rel="back"></a>
+    	<a href="#" data-role="button" data-icon="add" data-inline="true" id="add_my_act">我要参加</a>
+		<h1></h1>
+    </div>
+   
+    <div data-role="content" id="act_one_content">
+     <div id="cwrapper">
+     <div>
+      <ul  id="comment_list" class="list">
+     <li id="noremove">
+     <div>
+     <img id="act_content_img" src=""/>
+     <div class="transparent" id="act_title_a"><h4 id="act_content_title" style="margin-left:1em"></h4>
+     </div>
+     </div>
+     <div>
+     <div style="display:block;float:left;margin-bottom:-3em;margin-left:1em">
+     <span id="act_content_creater"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+     <span id="act_content_dis"></span>
+     </div>
+     <h2>"</h2>
+     </div>
+     </li>
+		</ul>
+		 <div id="cpullup" class="transparent">
+         <span class="pullUpLabel">点击显示更多。。。</span>
+         </div>
+         </div>
+		</div>
+    </div>
+    <div data-role="popup" id="success">
+    <h2>添加成功</h2>
+    </div><div data-role="popup" id="error">
+    <h2>请求错误</h2>
+    </div>
+     <div data-role="footer" data-position="fixed">
+     <a style="float:right;margin-top:.5em;"  id="push">发送</a>
+   <div style="width:82%"><input type="text"  name="text" id="act_text" value="" /></div>
+    </div>
+	</div>
+	<script type="text/javascript"  src="cordova-2.5.0.js"></script>
+	<script type="text/javascript"  src="js/device.js"></script>
+	<script type="text/javascript"  src="js/iscroll.js"></script>
+	<script type="text/javascript">
+	  $(".act_dis").tap(function(){
+		  base.utils.setParam("act_clazz", $(this).attr("id").charAt(4));
+		  $("#act_list2").empty();
+		  $.mobile.changePage("#act_list1");
+		  var list=base.utils.getParam("act_list");
+			if(list==null){
+				request.ajax(1);
+			}
+			else insert(JSON.parse(list));
+	  })
+	var insert =function(data,i){
+		var li;
+		var x=base.utils.getParam("act_clazz");
+		for(var i in data){
+			  if(data[i].clazz==x){
+				  li="<li><a href='#act_one' id='"+data[i].id+"'><img src='"+data[i].image+"'><h3>"+data[i].title+"</h3><p>"+data[i].creator_name+"</p></a></li>";             	 
+	        	if(i==1)  $("#act_list2").prepend(li);
+	        	else    $("#act_list2").append(li);
+			  }
+        	  };
+	}
+	  var insertmy =function(data,x){
+			var li; 
+			for(var i in data){
+				  if(data[i].id==x){
+					 li="<li><a href='#act_one' id='"+data[i].id+"'><img src='"+data[i].image+"'><h3>"+data[i].title+"</h3><p>"+data[i].creator_name+"</p></a></li>";             	 
+		        	  $("#myact_list").prepend(li);
+				  }
+	        	  };
+		}
+	
+	var request={
+			ajax:function(i){
+				showLoader();
+				var cur_id=base.utils.getParam("act_cur_id");
+				var url=base.website+"/activity?callback=?";
+				if(cur_id!=null){
+					url+="&id="+cur_id;
+				}
+				$.getJSON(url,function(data){
+					if(data.length!=0){
+	                insert(data,i);
+	                base.utils.setParam("act_cur_id",data[data.length-1].id);
+	                if(base.utils.getParam("act_list")){
+	                  	data=data.concat(JSON.parse(base.utils.getParam("act_list")));
+	                }
+	                base.utils.setParam("act_list",JSON.stringify(data));
+					}
+					hideLoader();
+					});
+			}
+	  }
+	$("#act_list2").delegate('a','tap',function(){base.utils.setParam("act_now_id",$(this).attr("id"))});
+	$("#myact_list").delegate('a','tap',function(){base.utils.setParam("act_now_id",$(this).attr("id"))});
+	
+	  var commnetajax=function(){
+		  var url = base.website+"/comment?id="+base.utils.getParam("act_now_id")+"&callback=?";
+		  $.getJSON(url,function(data){
+			  for(var i in data){
+			  var li = '<li ><h3>'+data[i].name+'</h3><p>'+data[i].content+'</p></li>'			    			
+              $("#comment_list").append(li);
+		  }
+		  })
+		
+	  }   
+	
+		$("#act_my_btn").tap(function(){
+			var list= base.utils.getParam("act_list");
+			var url =base.website+"/activity/getmy?id="+base.utils.getParam("user")+"&callback=?";
+			$.mobile.changePage("#act_my");
+			showLoader();
+			$.getJSON(url,function(data){
+				var s=data.list.split(",");
+				if(list!=null)
+					for(var i in s){
+						insertmy(JSON.parse(list),s[i]);
+					}
+			})
+			hideLoader();
+		})
+		
+		$("#add_my_act").tap(function(){
+			var url = base.website+"/activity/my?id="+base.utils.getParam("act_now_id")+"&username="+base.utils.getParam("user")+"&callback=?";		
+			showLoader();
+			$.getJSON(url,function(data){
+            	 if(data.status==1)
+                     $("#success").popup("open");
+			})
+			hideLoader();
+		})
+		
+		$("#new_act_btn").tap(function(){
+			 $.mobile.changePage("#new_act");
+			 document.addEventListener("deviceready", onDeviceReady, true);
+			 $("#add_new_act").tap(function(){
+				var url=base.website+"/activity/create?callback=?"+"&clazz="+base.utils.getParam("act_clazz")+"&id="+base.utils.getParam("user");
+			    var src=$("#show_photo")[0].src;
+			    var content=$("#text-3").attr("value");
+			    var title=$("#text-1").attr("value")
+				showLoader();
+				$.ajax({
+			    	url:encodeURI(url),
+			    	type:"POST",
+			    	data:{'image':src,'title':title,'content':content},
+			    	dataType:"jsonp",
+			    	success:function(data){
+			    		if(data.status==1)$.mobile.changePage("#act_my");
+			    	},
+			    	error:function(){
+			    	}
+			    })
+			    hideLoader();
+			 })
+			 
+		})
+		$("#push").tap(function(){
+                 var url = 	base.website + "/comment/create?callback=?&act_id="+base.utils.getParam("act_now_id")+"&id="+base.utils.getParam("user");		
+                 showLoader();
+                 $.ajax({
+			    	 url:url,
+				     type:"POST",
+				     data:{'content':$("#act_text").val(),'name':base.utils.getParam("name")},
+				     dataType:"jsonp",
+			    	 success:function(data){
+ 			    		 if(data.status==1){
+                              var li = '<li ><h3>'+base.utils.getParam("name")+'</h3><p>'+$("#act_text").val()+'</p></li>'			    			
+                              $("#comment_list").append(li);
+                            	$("#act_text").val("");
+                            	hideLoader();
+                            }
+			    	 },
+			         error:function(){
+			    	 }
+			    	 
+			     });
+		})
+		$("#act_one").live("pagecreate",function(){
+			
+			actone();
+		})
+	
+		
+var actone = function(){
+			$("#comment_list").remove("li[id!=noremove]");
+			var id=base.utils.getParam("act_now_id");
+			var json=JSON.parse(base.utils.getParam("act_list"));
+			for(var i=0;i<json.length;i++)
+				{
+				if(json[i].id==id){
+					$("#act_content_id").attr("value",json[i].id);
+					 $("#act_content_title").html(json[i].title);
+					  $("#act_content_img").attr("src",json[i].image);
+					  $("#act_content_creater").html(json[i].creator_name);
+					    $("#act_content_dis").html(json[i].content);
+				}
+				}
+			commnetajax();
+		}		
+ refresh(request,$(".act_dis"));
+ refreshcomment();
+ $("#cpullup").tap(function(){actone();});
+   </script>
+</body>
+</html>
+
+

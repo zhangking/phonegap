@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html manifest="cache.manifest">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css">
+<link rel="stylesheet" href="css/jquery.mobile.theme-1.3.0.css">
+<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.0.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/grid-listview.css">
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript"  src="js/main.js"></script>
+<script type="text/javascript"  src="js/jquery.mobile-1.3.0.js"></script>
+</head>
+<body>
+<!-- 封面-->
+	<div data-role="page" id="coverpage">
+		<img src="css/images/cover.jpg" style="width:100%;height:100%"/>
+	</div>
+<!--登录-->
+	<div data-role="page" id="login">
+	 <div data-role="header"><h1>登录</h1></div>
+	 <div data-role="content">
+		<form  method="POST" enctype="multipart/form-data">
+
+   <input name="image" type="file">
+   <a id="submit">submit</a>
+
+    </form>
+	<div data-role="popup" id="error">
+    <h2>信息错误</h2>
+     </div>
+	 </div>
+	</div>
+<!--主页 -->
+	<div data-role="page" id="index" data-dom-cache="true">
+		<div id="content" class="ui-grid-b">
+			<div class="ui-block-a">
+    	<a href="information.html"  data-inline="true" rel="external" data-ajax="false" id="a1" class="sprite" >
+			<span class="ui-text">校园咨询</span>
+				</a>
+				</div>
+				<div class="ui-block-b">
+    	<a href="activity.html"  data-inline="true" rel="external" data-ajax="false" id="a1" class="sprite" >
+			<span class="ui-text">校园咨询</span>
+				</a>
+				</div>
+		</div>
+		<div id="torn_paper" style="height: 12px">
+        </div>
+		<div id="logo">
+	   </div>
+	</div>
+	<script type="text/javascript"  src="cordova-2.5.0.js"></script>
+	<script type="text/javascript">
+	$(".sprite").tap(function(){showLoader()});
+	$('#coverpage').live("pagecreate",function(){
+		if(base.utils.checkclock()){
+			localStorage.clear();	
+			base.utils.setclock();
+				}
+	  if (base.utils.getParam('user') != null) {
+	  	$(this).tap(function(){$.mobile.changePage("#index",{transition:"slide"});})
+	  	setTimeout(function(){
+	  		$.mobile.changePage("#index",{transition:"slide"});
+	  	}, 2000);
+	  }
+	  else {
+		  /*      设置首次登陆时间                                        */
+			var time=new Date();  
+		    time=time.getTime();
+		    base.utils.setParam("clock",time);
+	  	$(this).tap(function(){$.mobile.changePage("#login",{transition:"slide"});})
+	  	setTimeout(function(){
+	  		$.mobile.changePage("#login",{transition:"slide"});
+	  	}, 2000);
+		}	
+	})
+	
+	$("#submit").tap(function(){
+		showLoader();
+		$.ajax({
+	 	  type: "GET",	
+     	  url:	base.website+"/index/add?callback=?",
+		  dataType:"jsonp",
+		  data:  $("#form").serialize(),
+		  success: function(msg){
+		  	if (msg.status == 1) {
+		  		alert("1");
+				base.utils.setParam("user",$("#username").attr("value"));
+				$.mobile.changePage("#index");
+			}
+			else {
+				$("#error").popup("open");
+			}
+		  }
+		})
+		//hideLoader();
+	});
+</script>	
+</body>
+</html>
